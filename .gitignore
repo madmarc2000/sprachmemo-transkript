@@ -1,0 +1,15 @@
+config.toml
+__pycache__/
+*.pyc
+# Aufnahmen und Ergebnisse gehören nie ins Repo
+*.wav
+*.m4a
+*.mp3
+*.aac
+*.caf
+*.ogg
+*.flac
+*.mp4
+daten/
+ausgabe/
+.claude/

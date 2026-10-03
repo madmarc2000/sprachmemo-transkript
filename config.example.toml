@@ -1,0 +1,36 @@
+# Kopieren nach config.toml und anpassen. config.toml ist in .gitignore.
+
+[pfade]
+daten = "~/sprachmemo/daten"          # Zustand, WAV und Clips je Aufnahme
+ausgabe = "~/sprachmemo/ausgabe"      # Wurzel für die Markdown-Ausgabe (z. B. ein Obsidian-Vault)
+roh = "Sprachmemos/roh"               # Rohfassungen, relativ zu ausgabe
+text = "Sprachmemos"                  # lesbarer Text, relativ zu ausgabe
+wortliste = "Sprachmemos/Wortliste.md"
+eingang = ""                          # Ordner für `eingang` (leer = aus)
+
+[ausgabe]
+obsidian = false                      # true = [[Wikilinks]] statt relativer Markdown-Links
+
+[worker]
+ssh = ""                              # leer = Docker lokal; sonst SSH-Host mit Docker (und GPU)
+arbeit = "sprachmemo-arbeit"          # Arbeitsordner auf dem Docker-Rechner, relativ zum Home
+image = "sprachmemo-transkript"
+cache_volume = "sprachmemo-cache"     # Docker-Volume mit den Modellen
+gpu = true                            # false = nur CPU (langsam)
+sprache = "de"
+
+[verschmelzen]
+# Bekommt den Prompt auf stdin und muss JSON auf stdout liefern.
+befehl = ["claude", "-p", "--model", "sonnet", "--tools", ""]
+beschreibung = "deutsch"              # z. B. "deutsch, starker Dialekt, viele Füllwörter"
+
+[server]
+host = "127.0.0.1"                    # keine Anmeldung — nur in einem vertrauenswürdigen Netz öffnen
+port = 8795
+url = ""                              # Adresse für Text und Meldung; leer = http://host:port/
+
+[melden]
+befehl = []                           # z. B. ["ntfy", "publish", "mein-thema"]; die Meldung wird angehängt
+
+[training]
+an = false                            # true = Clip + Korrektur nach daten/training/ (für späteres Feintuning)
